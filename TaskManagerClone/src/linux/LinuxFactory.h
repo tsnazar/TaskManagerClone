@@ -2,9 +2,13 @@
 
 #include "../ProcessesFactory.h"
 #include "../ProcessesImpl.h"
-#include "LinuxProcessesImpl.h"
+#include "../SysInfoFactory.h"
+#include "../SysInfoImpl.h"
 
-class LinuxFactory : public ProcessesFactory
+#include "LinuxProcessesImpl.h"
+#include "LinuxSysInfoImpl.h"
+
+class LinuxFactory : public ProcessesFactory, public SysInfoFactory
 {
 public:
 	static LinuxFactory* GetFactoryInstance()
@@ -23,6 +27,12 @@ public:
 	{
 		return new LinuxProcessesImpl;
 	};
+
+	virtual SysInfoImpl* MakeSysInfo() final
+	{
+		return new LinuxSysInfoImpl;
+	};
+
 private:
 	LinuxFactory() = default;
 };

@@ -3,9 +3,6 @@
 #include "../ProcessesImpl.h"
 
 #include <Windows.h>
-#include <stdio.h>
-#include <tchar.h>
-#include "psapi.h"
 
 class WindowsProcessesImpl : public ProcessesImpl
 {
@@ -15,7 +12,6 @@ public:
 
 	virtual int Scan();
 
-	virtual void ScanSysInfo();
 private:
 	void TryAdjustPriviliges();
 

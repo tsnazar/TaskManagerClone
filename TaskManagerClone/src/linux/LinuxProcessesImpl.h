@@ -1,15 +1,12 @@
 #pragma once 
 
 #include "../ProcessesImpl.h"
-#include <dirent.h>
-#include <sys/types.h>
-#include <sys/sysinfo.h>
 
 class LinuxProcessesImpl : public ProcessesImpl
 {
 public:
-	LinuxProcessesImpl();
+	LinuxProcessesImpl() = default;
 	virtual ~LinuxProcessesImpl() = default;
+
 	virtual int Scan();
-	virtual void ScanSysInfo();
 };

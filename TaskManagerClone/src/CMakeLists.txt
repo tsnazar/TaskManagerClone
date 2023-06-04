@@ -1,4 +1,6 @@
-add_executable (TaskManagerClone "Main.cpp" "ProcessesFactory.cpp" "TaskManagerApp.cpp" "RabinKarpAlg.h" "RabinKarpAlg.cpp")
+add_executable (TaskManagerClone "Main.cpp" "ProcessesFactory.cpp" "RabinKarpAlg.cpp" "SysInfoFactory.cpp")
+
+
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET TaskManagerClone PROPERTY CXX_STANDARD 20)

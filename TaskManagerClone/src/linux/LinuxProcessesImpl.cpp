@@ -1,5 +1,7 @@
 #include "LinuxProcessesImpl.h"
 
+#include <dirent.h>
+#include <sys/types.h>
 #include <sys/stat.h>
 
 #include <unistd.h>
@@ -12,10 +14,6 @@
 #include <algorithm>
 
 #include "../RabinKarpAlg.h"
-
-LinuxProcessesImpl::LinuxProcessesImpl()
-{
-}
 
 int LinuxProcessesImpl::Scan()
 {
@@ -172,24 +170,3 @@ int LinuxProcessesImpl::Scan()
 	return ProcessMap.size();
 }
 
-void LinuxProcessesImpl::ScanSysInfo()
-{
-	struct sysinfo MemInfo;
-	sysinfo(&MemInfo);
-
-	SysInfo.TotalVirtual = MemInfo.totalram;
-	SysInfo.TotalVirtual += MemInfo.totalswap;
-	SysInfo.TotalVirtual /= 1024 * 1024;
-
-	SysInfo.UsedVirtual = MemInfo.totalram - MemInfo.freeram;
-	SysInfo.UsedVirtual = MemInfo.totalswap - MemInfo.freeswap;
-	SysInfo.UsedVirtual /= 1024 * 1024;
-
-	SysInfo.TotalPhys = MemInfo.totalram;
-	SysInfo.TotalPhys /= 1024 * 1024;
-
-	SysInfo.UsedPhys = MemInfo.totalram - MemInfo.freeram;
-	SysInfo.UsedPhys /= 1024 * 1024;
-
-	SysInfo.PageSize = sysconf(_SC_PAGESIZE);
-}

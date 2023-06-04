@@ -15,7 +15,7 @@ public:
 			Impl = Factory->MakeProcesses();
 	}
 	
-	int Scan()
+	int ScanProcesses()
 	{
 		if (Impl)
 			return Impl->Scan();
@@ -23,16 +23,8 @@ public:
 		return -1;
 	};
 
-	void ScanSysInfo()
-	{
-		if (Impl)
-			Impl->ScanSysInfo();
-	}
-
 	int GetCount() { return Impl->GetCount(); };
 
-	GlobalSysInfo GetSysInfo() { return Impl->GetSysInfo(); }
-	
 	ProcessInfo GetProcessInfo(const int PId) { return Impl->GetProcessInfo(PId); };
 	
 	std::unordered_map<unsigned int, ProcessInfo>& GetMap() { return Impl->GetMap(); };

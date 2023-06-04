@@ -2,9 +2,13 @@
 
 #include "../ProcessesFactory.h"
 #include "../ProcessesImpl.h"
-#include "WindowsProcessesImpl.h"
+#include "../SysInfoFactory.h"
+#include "../SysInfoImpl.h"
 
-class WindowsFactory : public ProcessesFactory
+#include "WindowsProcessesImpl.h"
+#include "WindowsSysInfoImpl.h"
+
+class WindowsFactory : public ProcessesFactory, public SysInfoFactory
 {
 public:
 	static WindowsFactory* GetFactoryInstance()
@@ -23,6 +27,12 @@ public:
 	{
 		return new WindowsProcessesImpl;
 	};
+
+	virtual SysInfoImpl* MakeSysInfo() final
+	{
+		return new WindowsSysInfoImpl;
+	};
+
 private:
 	WindowsFactory() = default;
 };

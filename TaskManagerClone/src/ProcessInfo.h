@@ -13,15 +13,6 @@ typedef ULARGE_INTEGER PITIME;
 typedef int PITIME;
 #endif
 
-struct GlobalSysInfo
-{
-	unsigned long long PageSize;
-	unsigned long long TotalPhys;
-	unsigned long long UsedPhys;
-	unsigned long long TotalVirtual;
-	unsigned long long UsedVirtual;
-};
-
 struct ProcessInfo
 {
 	unsigned int Id;
